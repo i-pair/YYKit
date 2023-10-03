@@ -23,20 +23,20 @@
 #import "YYKitMacro.h"
 
 #ifndef YYIMAGE_WEBP_ENABLED
-#if __has_include(<webp/decode.h>) && __has_include(<webp/encode.h>) && \
-__has_include(<webp/demux.h>)  && __has_include(<webp/mux.h>)
+#if __has_include(<libwebp/decode.h>) && __has_include(<libwebp/encode.h>) && \
+__has_include(<libwebp/demux.h>)  && __has_include(<libwebp/mux.h>)
 #define YYIMAGE_WEBP_ENABLED 1
-#import <webp/decode.h>
-#import <webp/encode.h>
-#import <webp/demux.h>
-#import <webp/mux.h>
-#elif __has_include("webp/decode.h") && __has_include("webp/encode.h") && \
-__has_include("webp/demux.h")  && __has_include("webp/mux.h")
+#import <libwebp/decode.h>
+#import <libwebp/encode.h>
+#import <libwebp/demux.h>
+#import <libwebp/mux.h>
+#elif __has_include("libwebp/decode.h") && __has_include("libwebp/encode.h") && \
+__has_include("libwebp/demux.h")  && __has_include("libwebp/mux.h")
 #define YYIMAGE_WEBP_ENABLED 1
-#import "webp/decode.h"
-#import "webp/encode.h"
-#import "webp/demux.h"
-#import "webp/mux.h"
+#import "libwebp/decode.h"
+#import "libwebp/encode.h"
+#import "libwebp/demux.h"
+#import "libwebp/mux.h"
 #else
 #define YYIMAGE_WEBP_ENABLED 0
 #endif
@@ -1180,7 +1180,7 @@ NSString *YYImageTypeGetExtension(YYImageType type) {
         case YYImageTypeICNS: return @"icns";
         case YYImageTypeGIF: return @"gif";
         case YYImageTypePNG: return @"png";
-        case YYImageTypeWebP: return @"webp";
+        case YYImageTypeWebP: return @"libwebp";
         default: return nil;
     }
 }
@@ -1441,12 +1441,12 @@ BOOL YYImageWebPAvailable() {
 }
 
 CFDataRef YYCGImageCreateEncodedWebPData(CGImageRef imageRef, BOOL lossless, CGFloat quality, int compressLevel, YYImagePreset preset) {
-    NSLog(@"WebP decoder is disabled");
+    NSLog(@"libwebp decoder is disabled");
     return NULL;
 }
 
 NSUInteger YYImageGetWebPFrameCount(CFDataRef webpData) {
-    NSLog(@"WebP decoder is disabled");
+    NSLog(@"libwebp decoder is disabled");
     return 0;
 }
 
@@ -1455,7 +1455,7 @@ CGImageRef YYCGImageCreateWithWebPData(CFDataRef webpData,
                                        BOOL useThreads,
                                        BOOL bypassFiltering,
                                        BOOL noFancyUpsampling) {
-    NSLog(@"WebP decoder is disabled");
+    NSLog(@"libwebp decoder is disabled");
     return NULL;
 }
 
